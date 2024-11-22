@@ -1,28 +1,18 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Wrapper from "@/components/shared/wrapper";
 import QuarterBox from "../shared/quarterBox";
 import Image from "next/image";
-
-interface IspTrack {
-  title: string;
-  des: string;
-  number: number;
-}
-
-const SpTracks: IspTrack[] = [
-  {
-    title: "Quarter IV",
-    des: "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform",
-    number: 4,
-  },
-  {
-    title: "Quarter V",
-    des: "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform",
-    number: 5,
-  },
-];
+import { ProgramData } from "../../../utils/data";
 
 const SpecializedTracks = () => {
+  const [selectedItems, setSelectedItems] = useState("wmd");
+
+  const selectedItemsData = ProgramData.find(
+    (item) => item.slug === selectedItems
+  );
+  console.log(selectedItems);
+
   return (
     <section>
       <Wrapper>
@@ -35,20 +25,18 @@ const SpecializedTracks = () => {
           </p>
         </div>
         {/* Content left */}
-        <div className="flex mt-10 gap-7">
-          <div className="border rounded-xl shadow-xl border-slate-300 p-8 basis-8/12">
-            <h4 className=" text-teal-700 text-lg">Specialized Program</h4>
-            <h3 className="text-2xl font-bold">
-              Web 3.0 (Blockchain) and Metaverse Specialization
+        <div className="flex flex-col-reverse lg:flex-row mt-10 gap-7">
+          <div className="border self-start sticky top-28 rounded-xl shadow-xl border-slate-300 p-8 basis-8/12">
+            <h4 className=" text-primary text-lg font-medium">
+              Specialized Program
+            </h4>
+            <h3 className="text-2xl font-bold mt-2">
+              {selectedItemsData?.header}
             </h3>
-            <p className="text-xl text-slate-600 mt-2">
-              This Web 3.0 and Metaverse specialization focuses on developing
-              full-stack Web 3.0 and Metaverse experiences for the next
-              generation of the internet by specializing in building worlds that
-              merge the best of cutting-edge decentralized distributed
-              blockchains with 3D metaverse client experiences.
+            <p className="text-lg text-slate-600 mt-2 text-justify">
+              {selectedItemsData?.description}
             </p>
-            <button className="text-teal-700 text-xl mt-4 underline flex items-center gap-x-2">
+            <button className="text-primary text-xl mt-4 underline flex items-center gap-x-2">
               Learn More{" "}
               <svg
                 width="10"
@@ -64,34 +52,46 @@ const SpecializedTracks = () => {
                 />
               </svg>
             </button>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-              {SpTracks.map((track: IspTrack, index: number) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+              {selectedItemsData?.quarters.map((item) => (
                 <QuarterBox
-                  title={track.title}
-                  des={track.des}
-                  number={track.number}
+                  title={item.header}
+                  des={item.description}
+                  number={item.number}
                   haveBorder={false}
-                  key={index}
+                  key={item.number}
                 />
               ))}
             </div>
           </div>
           {/* Content right */}
-          <div className="p-5  basis-4/12 ">
-            <div className="flex items-center gap-4 cursor-pointer">
+          <div className="px-4 py-6 basis-4/12 flex-1  ">
+            {ProgramData.map((item, i) => (
               <div>
-               <div className="h-16 w-20 bg-red-500">
-
-               </div>
-                {/* <Image src={"/"} alt="" height={100} width={100} /> */}
+                <div
+                  onClick={() => setSelectedItems(item.slug)}
+                  key={item.slug}
+                  className="flex items-center gap-x-4 cursor-pointer group   "
+                >
+                  <div className="flex-shrink-0 w-36 bg-gradient-to-r from-cyan-500 to-primary rounded-md">
+                    <Image
+                      src={item.path}
+                      alt={item.header}
+                      height={100}
+                      width={200}
+                      className="h-24 object-cover rounded-md group-hover:-translate-y-1 group-hover:translate-x-1 duration-500 "
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-primary text-lg font-medium">
+                      Specialized Program
+                    </h4>
+                    <h3 className="text- font-bold"> {item.header} </h3>
+                  </div>
+                </div>
+                <div className="bg-gray-200 h-[1px] my-6"></div>
               </div>
-              <div>
-                <h4 className="text-primary font-medium">
-                  Specialized Program
-                </h4>
-                <h3 className="text-xl font-semibold">Web 3.0 (Blockchain) and Metaverse Specialization</h3>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </Wrapper>
