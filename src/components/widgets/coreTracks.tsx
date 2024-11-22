@@ -2,35 +2,21 @@ import React from "react";
 import Wrapper from "../shared/wrapper";
 import Button from "../shared/button";
 import QuarterBox from "../shared/quarterBox";
+import { coreTrackData } from "../../../utils/data";
+
 
 interface Itracks {
   title: string;
   des: string;
   number: number;
 }
-
-const coreTrackData = [
-  {
-    title: "Quarter I",
-    des: "CS-101: Object-Oriented Programming using TypeScript",
-    number: 1,
-  },
-  {
-    title: "Quarter II",
-    des: "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform",
-    number: 2,
-  },
-  {
-    title: "Quarter III",
-    des: "$-101: Dollar Making Bootcamp - Full-Stack Template and API Product Development",
-    number: 3,
-  },
-];
-
 export const CoreTracks = () => {
   return (
     <section className="mt-16 lg:mt-28">
       <Wrapper>
+      <div className="absolute left-0-0 hidden sm:block 4xl:hidden -z-20 2xl:hidden">
+          <div className="blur-[150px] -z-20 bg-backDrop w-64 h-64 rounded-full lg:h-80 lg:w-80 "></div>
+        </div>
         {/* Content */}
         <div className="max-w-screen-sm">
           <h4 className="text-teal-800 font-semibold text-lg mt-4">

@@ -112,3 +112,22 @@ export const ProgramData = [
 
 // Outcome component section Data
 export const OutcomeTags = ["Product Ownership", "Freelacing", "Global Marketing by DAO", "Boosting Economy."]
+
+// Core Tracks component data
+export const coreTrackData = [
+    {
+      title: "Quarter I",
+      des: "CS-101: Object-Oriented Programming using TypeScript",
+      number: 1,
+    },
+    {
+      title: "Quarter II",
+      des: "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform",
+      number: 2,
+    },
+    {
+      title: "Quarter III",
+      des: "$-101: Dollar Making Bootcamp - Full-Stack Template and API Product Development",
+      number: 3,
+    },
+  ];

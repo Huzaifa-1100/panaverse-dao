@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#00616C",
+        backDrop: "#05C19C99",
 
       },
     },

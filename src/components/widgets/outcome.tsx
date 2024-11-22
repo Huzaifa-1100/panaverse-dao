@@ -7,6 +7,9 @@ const Outcome = () => {
   return (
     <section className="my-16 md:my28">
       <Wrapper>
+        <div className="absolute right-0 hidden sm:block 4xl:hidden -z-20 2xl:hidden">
+          <div className="blur-[150px] -z-20 bg-backDrop w-64 h-64 rounded-full lg:h-80 lg:w-80 "></div>
+        </div>
         <div className="flex flex-col-reverse md:flex-row items-center gap-8">
           {/* Left Image */}
           <div className="flex-1">
@@ -23,18 +26,18 @@ const Outcome = () => {
               The Outcome for Participants of the Program
             </h2>
             <p className="mt-4 text-slate-600 text-lg text-justify">
-              As a graduate of this program, you will own valuable products such
+              {`As a graduate of this program, you will own valuable products such
               as Full-Stack App Templates, AR and VR Experiences, and APIs that
               are marketed globally by the Panaverse DAO. You will also have the
               opportunity to offer your services at a rate of $50 per hour,
               providing a path to financial stability while contributing to the
-              growth of Pakistan's software exports.
+              growth of Pakistan's software exports.`}
             </p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-4">
               {OutcomeTags.map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <svg
-                  className="flex-shrink-0"
+                    className="flex-shrink-0"
                     width="46"
                     height="46"
                     viewBox="0 0 46 46"

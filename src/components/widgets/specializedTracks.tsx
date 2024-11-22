@@ -66,11 +66,10 @@ const SpecializedTracks = () => {
           </div>
           {/* Content right */}
           <div className="px-4 py-6 basis-4/12 flex-1  ">
-            {ProgramData.map((item, i) => (
-              <div>
+            {ProgramData.map((item) => (
+              <div key={item.slug}>
                 <div
                   onClick={() => setSelectedItems(item.slug)}
-                  key={item.slug}
                   className="flex items-center gap-x-4 cursor-pointer group   "
                 >
                   <div className="flex-shrink-0 w-36 bg-gradient-to-r from-cyan-500 to-primary rounded-md">
